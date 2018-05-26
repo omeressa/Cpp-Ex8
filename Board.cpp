@@ -107,13 +107,13 @@ istream& operator>> (istream& is, Board& b){
     }
     
     uint i=0;
-    infile >> line;
+    infile >> FileName;
     Board temp((int)line.Size());
     while (i<temp.Size()) {
       if(i!=0)
-        infile >> line;
+        infile >> FileName;
       for (uint j = 0; j < temp.Size(); j++) {
-        temp[{i,j}] = line[j];
+        temp[{i,j}] = FileName[j];
       }
       i++;
     }
