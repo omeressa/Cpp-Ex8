@@ -29,6 +29,8 @@ class Board {
         Board& operator= (char c);
         Board& operator= (const Board& b);
         Condition& operator [](vector<int> vec);
+  
+        string draw(int picture);
 
         friend ostream& operator<< (ostream& os,const Board& board);
         
