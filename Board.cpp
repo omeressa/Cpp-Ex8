@@ -91,6 +91,35 @@ ostream& operator << (ostream & os, const Board & board){
     return os;
 }
 
+////////////////////////////////////////////////////////////
+istream& operator>> (istream& is, Board& b){
+    string filename,line;
+    is >> filename;
+    ifstream infile;
+    infile.open(filename);
+    
+    /* file not fount exiption */
+    if(infile.fail()){
+      cout << "file not found !!!" << endl;
+      exit(1);
+    }
+    
+    uint i=0;
+    infile >> line;
+    Board temp((int)line.size());
+    while (i<temp.size()) {
+      if(i!=0)
+        infile >> line;
+      for (uint j = 0; j < temp.size(); j++) {
+        temp[{i,j}] = line[j];
+      }
+      i++;
+    }
+    b = temp;
+    infile.close();
+    return is;
+}
+
 
 
 
