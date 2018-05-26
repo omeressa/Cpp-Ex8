@@ -7,6 +7,7 @@
 #include <vector>
 #include "Condition.h"
 #include "IllegalCoordinateException.h"
+#include <string>
 #include <fstream>
 
 
@@ -26,6 +27,8 @@ class Board {
 
         Board(const int size);
         Board(const Board& board); 
+        Board():board(nullptr),size(0){}
+
         ~Board();
         
         Board& operator= (char c);
@@ -36,6 +39,8 @@ class Board {
         string draw(int picture);
 
         friend ostream& operator<< (ostream& os,const Board& board);
+  
+        const uint size()const {return (uint)size;}
         
 };
 
