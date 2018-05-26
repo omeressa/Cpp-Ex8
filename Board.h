@@ -40,7 +40,7 @@ class Board {
 
         friend ostream& operator<< (ostream& os,const Board& board);
   
-        const uint size()const {return (uint)size;}
+        const uint Size()const {return (uint)size;}
         
 };
 
