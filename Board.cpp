@@ -94,7 +94,7 @@ ostream& operator << (ostream & os, const Board & board){
 ////////////////////////////////////////////////////////////
 
 istream& operator>> (istream& is, Board& b){
-    string filename,line;
+    string filename,Name;
     is >> filename;
     ifstream infile;
     infile.open(filename);
@@ -107,13 +107,13 @@ istream& operator>> (istream& is, Board& b){
     }
     
     uint i=0;
-    infile >> FileName;
+    infile >> Name;
     Board temp((int)line.Size());
     while (i<temp.Size()) {
       if(i!=0)
-        infile >> FileName;
+        infile >> Name;
       for (uint j = 0; j < temp.Size(); j++) {
-        temp[{i,j}] = FileName[j];
+        temp[{i,j}] = Name[j];
       }
       i++;
     }
