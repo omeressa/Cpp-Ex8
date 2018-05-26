@@ -8,7 +8,6 @@
 #include "Condition.h"
 #include "IllegalCoordinateException.h"
 #include <fstream>
-#include "Image.h"
 
 
 using namespace std;
