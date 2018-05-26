@@ -92,7 +92,7 @@ ostream& operator << (ostream & os, const Board & board){
 }
 
 ////////////////////////////////////////////////////////////
-/*
+
 istream& operator>> (istream& is, Board& b){
     string filename,line;
     is >> filename;
@@ -100,7 +100,7 @@ istream& operator>> (istream& is, Board& b){
     infile.open(filename);
     
     /* file not fount exiption */
-/*
+
     if(infile.fail()){
       cout << "file not found !!!" << endl;
       exit(1);
@@ -121,15 +121,15 @@ istream& operator>> (istream& is, Board& b){
     infile.close();
     return is;
 }
-*/
 
+/*
 istream &operator>>(istream &in,  Board &b)
 {
     Board temp;
     in >> temp;
     b = temp ;
     return in;
-}
+}*/
 
 
 string Board::draw(int n){
