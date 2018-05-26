@@ -121,7 +121,53 @@ istream& operator>> (istream& is, Board& b){
 }
 
 
+string Board::draw(int n){
 
+      const int length = n, width = n;
+      string fileName = "TicTacToe.ppm";
+      ifstream File(fileName);
+        bool fileExist = false;
+
+        if(File){
+            cout << "does exist!!!" << endl;
+            fileExist = true;
+        }
+
+        int index = 1;
+
+        while(fileExist){
+            fileName = "TicTacToe";
+            fileName += to_string(index);
+            fileName += ".ppm";
+
+            ifstream File(fileName);
+            if(File) {index++;}
+            else {fileExist=false;}
+        }
+
+    ofstream imageFile(fileName);//create new file
+      cout << "omar_board: " << fileName << endl;
+
+      imageFile << "P6" << endl << length <<" " << width << endl << 255 << endl;
+      RedGreenBlue image[length*length];
+      for (int j = 0; j < length; ++j){  
+        for (int i = 0; i < length; ++i){
+           image[(length*j)+i].red = (i % 256);
+           image[(length*j)+i].green = (j % 256);
+           image[(length*j)+i].blue = ( ((i*i)+(j*j)) % 256);
+         }
+      }
+    /*
+    *    http://www.informit.com/articles/article.aspx?p=328647
+    */
+      image[0].red = 255;
+      image[0].blue = 0;
+      image[0].green = 0;
+    
+      imageFile.write(reinterpret_cast<char*>(&image), 3*length*length); // processing image
+      imageFile.close();
+      return "TicTacToe.ppm";
+    }
 
 
 
