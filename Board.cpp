@@ -108,7 +108,7 @@ istream& operator>> (istream& is, Board& b){
     
     uint i=0;
     infile >> Name;
-    Board temp((int)line.Size());
+    Board temp((int)Name.Size());
     while (i<temp.Size()) {
       if(i!=0)
         infile >> Name;
