@@ -96,7 +96,7 @@ ostream& operator << (ostream & os, const Board & board){
 ///////////////////////////////////////////////////////////////////
 
 Board:: Board(){
-	this->Board =nullptr;
+	this->board =nullptr;
 	this->size=0;
 }
 
