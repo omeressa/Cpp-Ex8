@@ -106,11 +106,11 @@ istream& operator>> (istream &is,  Board &board){
     int size=file.length();
     Board temp(size);
     int i;
-    for(i=0; i<size; i++) temp[{0,i}] = file[i];
-    int num = 1;
+    for(i=0; i<size; i++) temp[{0,i}]=file[i];
+    int num=1;
     while(is>>file){
         i=0;
-        for(i=0; i<size; i++) temp[{num, i}] = file[i];
+        for(i=0; i<size; i++) temp[{num,i}]=file[i];
         num++;
     }
     board=temp;
@@ -143,9 +143,9 @@ istream& operator>> (istream &is,  Board &board){
 /*
 * creat lines
 */
-	for(int i=0;i<size;++i){//create rows
+	for(int i=0;i<size;i++){//create rows
 	    int wid=i*(length/size);
-            for(int j=0;j<length;++j){
+            for(int j=0;j<length;j++){
 /*
 *giving only the blue one 255 and others 
 * give them zero makes our TicTacToe board rows a blue rows
@@ -155,9 +155,9 @@ istream& operator>> (istream &is,  Board &board){
                 image[(wid*length)+j].blue =255;
 		}
 	}
-	for(int i=0;i<size;++i){//create col
+	for(int i=0;i<size;i++){//create col
 		int len =i*(length/size);
-		for(int j=0;j<length;++j){
+		for(int j=0;j<length;j++){
 /*
 *giving only the blue one 255 and others 
 * give them zero makes our TicTacToe board col a blue col
@@ -168,7 +168,7 @@ istream& operator>> (istream &is,  Board &board){
 		}
 	}
 	for(int i=0;i<size;++i){//X and Y signs
-		for(int j=0;j<size;++j){
+		for(int j=0;j<size;j++){
                     int len, to_len, wid, to_wid;
 	            len =j*(length/size);
 		    to_len =(j+1)*(length/size);
@@ -179,9 +179,8 @@ istream& operator>> (istream &is,  Board &board){
 	           int len_dist =(to_len-len)/2;
                    int wid_dist =(to_wid-wid)/2;
                    int rad = len_dist;
-		   for(int i=0;i<to_wid-wid;++i){
+		   for(int i=0;i<to_wid-wid;i++){
 		       int j=sqrt((rad*rad)-(i-len_dist)*(i-len_dist))+wid_dist;
-   		       int a =5;
 /*
 *sign O will be black cuz all green red and blue = 0
 */
@@ -195,12 +194,12 @@ istream& operator>> (istream &is,  Board &board){
 *                        --
 *two sides at the same time (left and right) :-)
 */
-                       image[length*((wid+j)-a)+len+i].green =0;
-          	       image[length*((wid+j)-a)+len+i].blue =0;
-                       image[length*((wid+j)-a)+len+i].red =0;
-               	       image[length*(to_wid+a-j)+len+i].green =0;
-          	       image[length*(to_wid+a-j)+len+i].blue =0;
-                       image[length*(to_wid+a-j)+len+i].red =0;
+                       image[length*(wid+j)+len+i].green =0;
+          	       image[length*(wid+j)+len+i].blue =0;
+                       image[length*(wid+j)+len+i].red =0;
+               	       image[length*(to_wid-j)+len+i].green =0;
+          	       image[length*(to_wid-j)+len+i].blue =0;
+                       image[length*(to_wid-j)+len+i].red =0;
 		 }
 	     }
 /*
@@ -210,7 +209,7 @@ istream& operator>> (istream &is,  Board &board){
 * same method used in drawing O 
 */
 		else if(board[{i,j}] =='X'){ // draw X
-		       for(int t=0;t<to_wid-wid;++t){
+		       for(int t=0;t<to_wid-wid;t++){
                            image[length*(t+wid)+len+t].green =0;
                            image[length*(t+wid)+len+t].red =0;
 	                   image[length*(t+wid)+len+t].blue =0;
