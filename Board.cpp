@@ -95,22 +95,27 @@ ostream& operator << (ostream & os, const Board & board){
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-    istream& operator>> (istream &is,  Board &board){
-        string file;
-        is>>file;
-        int size=file.length();
-        Board temp(size);
-        int i;
-        for(i=0; i<size; i++) temp[{0,i}] = file[i];
-        int num = 1;
-        while(is>>file){
-            i=0;
-            for(i=0; i<size; i++) temp[{num, i}] = file[i];
-            num++;
-        }
-        b=temp;
-        return is;
+Board:: Board(){
+	this->Board =nullptr;
+	this->size=0;
+}
+
+istream& operator>> (istream &is,  Board &board){
+    string file;
+    is>>file;
+    int size=file.length();
+    Board temp(size);
+    int i;
+    for(i=0; i<size; i++) temp[{0,i}] = file[i];
+    int num = 1;
+    while(is>>file){
+        i=0;
+        for(i=0; i<size; i++) temp[{num, i}] = file[i];
+        num++;
     }
+    b=temp;
+    return is;
+}
 
 
 
