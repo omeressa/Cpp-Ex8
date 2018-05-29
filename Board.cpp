@@ -113,7 +113,7 @@ istream& operator>> (istream &is,  Board &board){
         for(i=0; i<size; i++) temp[{num, i}] = file[i];
         num++;
     }
-    b=temp;
+    board=temp;
     return is;
 }
 
