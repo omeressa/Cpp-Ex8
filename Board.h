@@ -29,18 +29,15 @@ class Board {
 
         Board(const int size);
         Board(const Board& board); 
-        Board();
-        //Board():board(nullptr),size(0){}
-
-
+        Board();// added for Ex8
         ~Board();
         
         Board& operator= (char c);
         Board& operator= (const Board& b);
         Condition& operator [](vector<int> vec);
   
-      	friend istream &operator >> (istream  &input, Board &board);
-        string draw(int picture);
+      	friend istream &operator >> (istream  &input, Board &board);// added for Ex8
+        string draw(int pic_len);// added for Ex8
 
         friend ostream& operator<< (ostream& os,const Board& board);
   
