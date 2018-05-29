@@ -169,19 +169,19 @@ istream& operator>> (istream &is,  Board &board){
 	}
 	for(int i=0;i<size;++i){//X and Y signs
 		for(int j=0;j<size;++j){
-            int len, to_len, wid, to_wid;
-			len =j*(length/size);
+                    int len, to_len, wid, to_wid;
+	            len =j*(length/size);
 		    to_len =(j+1)*(length/size);
-			wid =i*(length/size);
-			to_wid =(i+1)*(length/size);
+		    wid =i*(length/size);
+		    to_wid =(i+1)*(length/size);
             
             if(board[{i,j}] =='O'){//draw O
-				   int len_dist =(to_len-len)/2;
+	           int len_dist =(to_len-len)/2;
                    int wid_dist =(to_wid-wid)/2;
                    int rad = len_dist;
-				   for(int i=0;i<to_wid-wid;++i){
-					  int j=sqrt((rad*rad)-(i-len_dist)*(i-len_dist))+wid_dist;
-					  int a =5;
+		   for(int i=0;i<to_wid-wid;++i){
+		       int j=sqrt((rad*rad)-(i-len_dist)*(i-len_dist))+wid_dist;
+   		       int a =5;
 /*
 *sign O will be black cuz all green red and blue = 0
 */
@@ -195,14 +195,14 @@ istream& operator>> (istream &is,  Board &board){
 *                        --
 *two sides at the same time (left and right) :-)
 */
-                      image[length*((wid+j)-a)+len+i].green =0;
-          	      image[length*((wid+j)-a)+len+i].blue =0;
-                      image[length*((wid+j)-a)+len+i].red =0;
-               	      image[length*(to_wid+a-j)+len+i].green =0;
-          	      image[length*(to_wid+a-j)+len+i].blue =0;
-                      image[length*(to_wid+a-j)+len+i].red =0;
-				}
-			}
+                       image[length*((wid+j)-a)+len+i].green =0;
+          	       image[length*((wid+j)-a)+len+i].blue =0;
+                       image[length*((wid+j)-a)+len+i].red =0;
+               	       image[length*(to_wid+a-j)+len+i].green =0;
+          	       image[length*(to_wid+a-j)+len+i].blue =0;
+                       image[length*(to_wid+a-j)+len+i].red =0;
+		 }
+	     }
 /*
 *giving all green red and blue zero ,makes our X sign color black
 */
@@ -210,17 +210,17 @@ istream& operator>> (istream &is,  Board &board){
 * same method used in drawing O 
 */
 		else if(board[{i,j}] =='X'){ // draw X
-			   for(int t=0;t<to_wid-wid;++t){
-                   image[length*(t+wid)+len+t].green =0;
-                   image[length*(t+wid)+len+t].red =0;
-	           image[length*(t+wid)+len+t].blue =0;
-                   image[length*(t+wid)+to_len-t].blue =0;
-                   image[length*(t+wid)+to_len-t].green =0;
-                   image[length*(t+wid)+to_len-t].red =0;
-				}
-			} 
+		       for(int t=0;t<to_wid-wid;++t){
+                           image[length*(t+wid)+len+t].green =0;
+                           image[length*(t+wid)+len+t].red =0;
+	                   image[length*(t+wid)+len+t].blue =0;
+                           image[length*(t+wid)+to_len-t].blue =0;
+                           image[length*(t+wid)+to_len-t].green =0;
+                           image[length*(t+wid)+to_len-t].red =0;
+			}
+	   	    } 
 		}
-	}
+	    }
 
 /*
 *image processing
