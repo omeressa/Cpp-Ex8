@@ -91,7 +91,9 @@ ostream& operator << (ostream & os, const Board & board){
     return os;
 }
 
-////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 
     istream& operator>> (istream &is,  Board &board){
         string file;
@@ -109,6 +111,7 @@ ostream& operator << (ostream & os, const Board & board){
         b=temp;
         return is;
     }
+
 
 
   string Board::draw(int num){
@@ -135,28 +138,28 @@ ostream& operator << (ostream & os, const Board & board){
 /*
 * creat lines
 */
-	for(int i=0;i<size;++i){//create col
-		int len =i*(length/size);
-		for(int j=10;j<length-10;++j){
-/*
-*giving only the blue one 255 and others 
-* give them zero makes our TicTacToe board col a blue col
-*/
-			image[(length*j)+len].red =0;
-			image[(length*j)+len].green =0;
-			image[(length*j)+len].blue =255;
-		}
-	}
 	for(int i=0;i<size;++i){//create rows
 	    int wid=i*(length/size);
-        for(int j=10;j<length-10;++j){
+            for(int j=0;j<length;++j){
 /*
 *giving only the blue one 255 and others 
 * give them zero makes our TicTacToe board rows a blue rows
 */
           	image[(wid*length)+j].red =0;
           	image[(wid*length)+j].green =0;
-            image[(wid*length)+j].blue =255;
+                image[(wid*length)+j].blue =255;
+		}
+	}
+	for(int i=0;i<size;++i){//create col
+		int len =i*(length/size);
+		for(int j=0;j<length;++j){
+/*
+*giving only the blue one 255 and others 
+* give them zero makes our TicTacToe board col a blue col
+*/
+		    image[(length*j)+len].red =0;
+		    image[(length*j)+len].green =0;
+		    image[(length*j)+len].blue =255;
 		}
 	}
 	for(int i=0;i<size;++i){//X and Y signs
@@ -171,29 +174,42 @@ ostream& operator << (ostream & os, const Board & board){
 				   int len_dist =(to_len-len)/2;
                    int wid_dist =(to_wid-wid)/2;
                    int rad = len_dist;
-				   for(int i=0;i<to_wid-wid-10;++i){
+				   for(int i=0;i<to_wid-wid;++i){
 					  int j=sqrt((rad*rad)-(i-len_dist)*(i-len_dist))+wid_dist;
 					  int a =5;
 /*
-*sign O will be black cuz all green red and blue = 0;
+*sign O will be black cuz all green red and blue = 0
+*/
+
+/* the idea here is to draw the two sides of sing O at the same time
+*  something like this :
+*                        --
+*                     --    --
+*                   --        --
+*                     --    --
+*                        --
+*two sides at the same time (left and right) :-)
 */
                       image[length*((wid+j)-a)+len+i].green =0;
-          			  image[length*((wid+j)-a)+len+i].blue =0;
+          	      image[length*((wid+j)-a)+len+i].blue =0;
                       image[length*((wid+j)-a)+len+i].red =0;
-          			  image[length*(to_wid+a-j)+len+i].green =0;
-          			  image[length*(to_wid+a-j)+len+i].blue =0;
+               	      image[length*(to_wid+a-j)+len+i].green =0;
+          	      image[length*(to_wid+a-j)+len+i].blue =0;
                       image[length*(to_wid+a-j)+len+i].red =0;
 				}
 			}
 /*
 *giving all green red and blue zero ,makes our X sign color black
 */
+/* 
+* same method used in drawing O 
+*/
 		else if(board[{i,j}] =='X'){ // draw X
-			   for(int t=0;t<to_wid-wid-10;++t) {
+			   for(int t=0;t<to_wid-wid;++t){
                    image[length*(t+wid)+len+t].green =0;
                    image[length*(t+wid)+len+t].red =0;
-	               image[length*(t+wid)+len+t].blue =0;
-		           image[length*(t+wid)+to_len-t].blue =0;
+	           image[length*(t+wid)+len+t].blue =0;
+                   image[length*(t+wid)+to_len-t].blue =0;
                    image[length*(t+wid)+to_len-t].green =0;
                    image[length*(t+wid)+to_len-t].red =0;
 				}
