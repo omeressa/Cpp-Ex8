@@ -29,7 +29,9 @@ class Board {
 
         Board(const int size);
         Board(const Board& board); 
-        Board():board(nullptr),size(0){}
+        Board();
+        //Board():board(nullptr),size(0){}
+
 
         ~Board();
         
