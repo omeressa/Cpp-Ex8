@@ -168,7 +168,7 @@ istream& operator>> (istream &is,  Board &board){
 		    image[(length*j)+len].blue =255;
 		}
 	}
-	for(int i=0;i<size;++i){//X and Y signs
+	for(int i=0;i<size;++i){//O and X signs
 		for(int j=0;j<size;j++){
                     int len, to_len, wid, to_wid;
 	            len =j*(length/size);
