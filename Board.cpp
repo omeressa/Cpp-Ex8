@@ -343,7 +343,7 @@ istream& operator>> (istream &is,  Board &board){
 	   	    } 
 		}
 	    }
-
+	  }
 /*
 *image processing
 */
