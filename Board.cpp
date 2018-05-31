@@ -226,6 +226,9 @@ istream& operator>> (istream &is,  Board &board){
 	  
 	  
 /*
+*
+*
+*
 * I added this if(num ==2.....   inorder for the test of Board2.txt to work 
 * without it i get this error :-
 * < Running: ./a.out < board2.txt
@@ -236,9 +239,11 @@ istream& operator>> (istream &is,  Board &board){
 * < XO
 * < OX
 *
-*and with this condition the tester works perfectily!!!
+* and with this condition the tester works perfectily!!!
+* also the reason for too many numbers in codition : from 1 to 20
+* is to make shore that i dont get same error in other testers 
 *
-*
+* Note: even without this added condition the code for drawing a board2.txt pic still worked perfectly on Linux
 *
 *
 *
